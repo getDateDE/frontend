@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/institute/institute_overview.dart';
+import 'package:frontend/main.dart';
 import 'package:intl/intl.dart';
 
 class ConfirmationPage extends StatelessWidget {
@@ -15,7 +18,7 @@ class ConfirmationPage extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
             child: Text(
               "Diese Infomationen werden weitergegeben, um eine Anfrage für diesen Termin zu machen:",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16,),
             ),
           ),
           Padding(
@@ -94,7 +97,12 @@ class ConfirmationPage extends StatelessWidget {
               ),
               onPressed: () {
                 //TODO server request to take appointment
-                Navigator.pop(context);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TerminMS(),
+                  ),
+                );
               },
             ),
           ),

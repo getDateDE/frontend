@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/day_page/confirmation_page.dart';
 import 'package:frontend/util/reusable_widgets/password_textfield.dart';
 
 class LoginPage extends StatefulWidget {
@@ -56,6 +57,12 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   _key.currentState.save();
                   //TODO login process
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ConfirmationPage(),
+                    ),
+                  );
                 },
               ),
             ),

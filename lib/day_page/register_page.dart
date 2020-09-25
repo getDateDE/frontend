@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/day_page/confirmation_page.dart';
+import 'package:frontend/day_page/login_page.dart';
 import 'package:frontend/util/reusable_widgets/password_textfield.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -71,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: PasswordTextField((String value) => _password = value),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
+              padding: EdgeInsets.fromLTRB(15, 30, 15, 15),
               child: FlatButton(
                 child: Text(
                   "Registrieren",
@@ -88,7 +90,35 @@ class _RegisterPageState extends State<RegisterPage> {
                   }
                   _key.currentState.save();
                   //TODO register process
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ConfirmationPage(),
+                    ),
+                  );
                 },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
+              child: Container(
+                height: 60,
+                child: OutlinedButton(
+                  child: Text(
+                    "Einloggen",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  //color: Color.fromARGB(255, 200, 200, 200),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginPage(),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

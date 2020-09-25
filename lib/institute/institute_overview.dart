@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/day_page/day_page.dart';
+import 'package:frontend/main.dart';
+import 'package:openapi/api.dart';
 
 class InstituteOverview extends StatefulWidget {
-  InstituteOverview();
-
   @override
   State<StatefulWidget> createState() => _InstituteOverviewState();
 }
@@ -12,22 +11,22 @@ class InstituteOverview extends StatefulWidget {
 class _InstituteOverviewState extends State<InstituteOverview> {
   @override
   Widget build(BuildContext context) {
+    List<Widget> _children = [
+      TextFormField(
+        decoration: InputDecoration(
+            suffixIcon: Icon(Icons.search), border: OutlineInputBorder()),
+      ),
+      Container(
+        height: 10,
+      ),
+    ];
+
+    List<Institute> institutes;
+
+    defaultApi.getInstitutes(institute: institutes);
+
     return ListView(
-      children: [
-        TextFormField(
-          decoration: InputDecoration(
-              suffixIcon: Icon(Icons.search), border: OutlineInputBorder()),
-        ),
-        Container(
-          height: 10,
-        ),
-        ListTile(
-            title: Text("Haircut"),
-            subtitle: Text("Hafenweg 16"),
-            trailing: Icon(Icons.event),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => DayPage()))),
-      ],
+      children: _children,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/day_page/appointment_card.dart';
 import 'package:intl/intl.dart';
 
 import 'package:timeline_tile/timeline_tile.dart';
@@ -11,6 +12,18 @@ class DayPage extends StatefulWidget {
 
 class _DayPageState extends State<DayPage> {
   DateTime currentDay = DateTime.now();
+  List<DateTime> dateTimesTest = [];
+  List<TimelineTile> content = [];
+
+  initState() {
+    for (int i = 0; i < 20; i++) {
+      dateTimesTest.add(
+        DateTime(currentDay.year, currentDay.month, currentDay.day, 2 + i),
+      );
+    }
+    super.initState();
+    load();
+  }
 
   previous() {
     DateTime newCurrentDay = currentDay.add(Duration(days: -1));
@@ -33,7 +46,43 @@ class _DayPageState extends State<DayPage> {
   load() {
     // TODO make http request with current day
     setState(() {
+      createContent();
     });
+  }
+
+  createContent() {
+    EdgeInsets startEndPadding = EdgeInsets.fromLTRB(30, 15, 15, 15);
+    content = [];
+    content.add(TimelineTile(
+      alignment: TimelineAlign.start,
+      endChild: Padding(
+        padding: startEndPadding,
+        child: Text(
+          "Anfang",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+      ),
+      isFirst: true,
+    ));
+    dateTimesTest.forEach((element) {
+      content.add(
+        TimelineTile(
+          alignment: TimelineAlign.start,
+          endChild: AppointmentCard(element),
+        ),
+      );
+    });
+    content.add(TimelineTile(
+      alignment: TimelineAlign.start,
+      endChild: Padding(
+        padding: startEndPadding,
+        child: Text(
+          "Ende",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+      ),
+      isLast: true,
+    ));
   }
 
   @override
@@ -69,7 +118,12 @@ class _DayPageState extends State<DayPage> {
           }
         },
       ),
-      body:TimelineTile(alignment: TimelineAlign.start,isFirst: true, isLast: true,),
+      body: Padding(
+        padding: EdgeInsets.all(15),
+        child: ListView(
+          children: content,
+        ),
+      ),
     );
   }
 }

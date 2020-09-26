@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/main.dart';
-import 'package:openapi/api.dart';
 
 class InstituteOverview extends StatefulWidget {
   @override
@@ -21,9 +19,9 @@ class _InstituteOverviewState extends State<InstituteOverview> {
       ),
     ];
 
-    List<Institute> institutes;
+    //List<Institute> institutes;
 
-    defaultApi.getInstitutes(institute: institutes);
+    //defaultApi.getInstitutes(institute: institutes);
 
     return ListView(
       children: _children,

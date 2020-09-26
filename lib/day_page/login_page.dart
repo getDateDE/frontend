@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/const/current_user.dart';
 import 'package:frontend/day_page/confirmation_page.dart';
 import 'package:frontend/util/reusable_widgets/password_textfield.dart';
 
@@ -57,6 +58,9 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   _key.currentState.save();
                   //TODO login process
+
+                  setCredentials(_email, _password);
+
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

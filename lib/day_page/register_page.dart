@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/const/current_user.dart';
 import 'package:frontend/day_page/confirmation_page.dart';
 import 'package:frontend/day_page/login_page.dart';
+import 'package:frontend/main.dart';
 import 'package:frontend/util/reusable_widgets/password_textfield.dart';
+import 'package:openapi/api.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -89,7 +92,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     return;
                   }
                   _key.currentState.save();
-                  //TODO register process
+
+                  defaultApi
+                      .register(
+                          registerRequest: RegisterRequest()
+                            ..email = _email
+                            ..password = _password
+                            ..firstname = _firstName
+                            ..lastname = _lastName)
+                      .then((value) {
+                    setCredentials(_email, _password);
+                  });
+
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

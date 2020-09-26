@@ -31,6 +31,7 @@ dependencies:
   intl: ^0.16.1
   timeline_tile: ^1.0.0
   shared_preferences: ^0.5.12
+  flutter_circular_chart: ^0.1.0
   openapi:
     path: ./api/
 

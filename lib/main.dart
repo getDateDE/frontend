@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/const/current_user.dart';
-import 'package:frontend/day_page/register_page.dart';
+import 'package:frontend/institute_pages/institute_appointment_planner_page.dart';
+import 'package:frontend/institute_pages/institute_home.dart';
 import 'package:openapi/api.dart';
+
+import 'institute_pages/institute_appointment_manager.dart';
 
 DefaultApi defaultApi;
 ApiClient apiClient;
@@ -11,7 +14,7 @@ void main() {
   defaultApi = DefaultApi(apiClient);
 
   loadCredentials();
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(TerminMS());
 }
 
@@ -27,10 +30,7 @@ class TerminMS extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.all(15),
-          child: RegisterPage(),
-        ),
+        body: InstituteAppointmentManagerPage(),
       ),
     );
   }

@@ -2,26 +2,26 @@ part of openapi.api;
 
 class SlotCreationRequest {
   
-  int date = null;
+  int dateTimestamp = null;
   
   int durationInMinutes = null;
   SlotCreationRequest();
 
   @override
   String toString() {
-    return 'SlotCreationRequest[date=$date, durationInMinutes=$durationInMinutes, ]';
+    return 'SlotCreationRequest[dateTimestamp=$dateTimestamp, durationInMinutes=$durationInMinutes, ]';
   }
 
   SlotCreationRequest.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    date = json['date'];
+    dateTimestamp = json['dateTimestamp'];
     durationInMinutes = json['durationInMinutes'];
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (date != null)
-      json['date'] = date;
+    if (dateTimestamp != null)
+      json['dateTimestamp'] = dateTimestamp;
     if (durationInMinutes != null)
       json['durationInMinutes'] = durationInMinutes;
     return json;

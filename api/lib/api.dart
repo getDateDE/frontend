@@ -15,12 +15,15 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/default_api.dart';
 
+part 'model/add_employee_request.dart';
 part 'model/address.dart';
 part 'model/institute.dart';
+part 'model/institutes_search_response.dart';
 part 'model/register_request.dart';
 part 'model/register_response.dart';
 part 'model/slot.dart';
 part 'model/slot_creation_request.dart';
+part 'model/slots_search_response.dart';
 part 'model/user.dart';
 
 

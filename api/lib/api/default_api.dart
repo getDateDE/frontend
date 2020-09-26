@@ -9,6 +9,120 @@ class DefaultApi {
 
   ///  with HTTP info returned
   ///
+  /// 
+  Future addEmployeeWithHttpInfo(String id, { AddEmployeeRequest addEmployeeRequest }) async {
+    Object postBody = addEmployeeRequest;
+
+    // verify required params are set
+    if(id == null) {
+     throw ApiException(400, "Missing required param: id");
+    }
+
+    // create path and map variables
+    String path = "/institute/{id}/employees".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+
+    List<String> contentTypes = ["application/json"];
+
+    String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    List<String> authNames = [];
+
+    if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+    }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'POST',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             nullableContentType,
+                                             authNames);
+    return response;
+  }
+
+  /// 
+  ///
+  /// 
+  Future addEmployee(String id, { AddEmployeeRequest addEmployeeRequest }) async {
+    Response response = await addEmployeeWithHttpInfo(id,  addEmployeeRequest: addEmployeeRequest );
+    if(response.statusCode >= 400) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    } else if(response.body != null) {
+    } else {
+      return;
+    }
+  }
+
+  ///  with HTTP info returned
+  ///
+  /// 
+  Future clearSlotWithHttpInfo(String slotId) async {
+    Object postBody;
+
+    // verify required params are set
+    if(slotId == null) {
+     throw ApiException(400, "Missing required param: slotId");
+    }
+
+    // create path and map variables
+    String path = "/slot/{slotId}/clear".replaceAll("{format}","json").replaceAll("{" + "slotId" + "}", slotId.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+
+    List<String> contentTypes = [];
+
+    String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    List<String> authNames = [];
+
+    if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+    }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'DELETE',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             nullableContentType,
+                                             authNames);
+    return response;
+  }
+
+  /// 
+  ///
+  /// 
+  Future clearSlot(String slotId) async {
+    Response response = await clearSlotWithHttpInfo(slotId);
+    if(response.statusCode >= 400) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    } else if(response.body != null) {
+    } else {
+      return;
+    }
+  }
+
+  ///  with HTTP info returned
+  ///
   /// creates an institute
   Future createInstituteWithHttpInfo({ Institute institute }) async {
     Object postBody = institute;
@@ -26,7 +140,7 @@ class DefaultApi {
     List<String> contentTypes = ["application/json"];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = ["Authorization"];
+    List<String> authNames = [];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -63,17 +177,14 @@ class DefaultApi {
 
   ///  with HTTP info returned
   ///
-  /// creates an appointment
-  Future createInstituteSlotWithHttpInfo(String id, { SlotCreationRequest slotCreationRequest }) async {
+  /// 
+  Future createSlotWithHttpInfo({ SlotCreationRequest slotCreationRequest }) async {
     Object postBody = slotCreationRequest;
 
     // verify required params are set
-    if(id == null) {
-     throw ApiException(400, "Missing required param: id");
-    }
 
     // create path and map variables
-    String path = "/institute/{id}/slot".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/slot".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -83,7 +194,7 @@ class DefaultApi {
     List<String> contentTypes = ["application/json"];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = [];
+    List<String> authNames = ["Authorization"];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -107,9 +218,9 @@ class DefaultApi {
 
   /// 
   ///
-  /// creates an appointment
-  Future createInstituteSlot(String id, { SlotCreationRequest slotCreationRequest }) async {
-    Response response = await createInstituteSlotWithHttpInfo(id,  slotCreationRequest: slotCreationRequest );
+  /// 
+  Future createSlot({ SlotCreationRequest slotCreationRequest }) async {
+    Response response = await createSlotWithHttpInfo( slotCreationRequest: slotCreationRequest );
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
@@ -137,7 +248,7 @@ class DefaultApi {
     List<String> contentTypes = [];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = [];
+    List<String> authNames = ["Authorization"];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -184,7 +295,7 @@ class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/institute/{id}/slot".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/institute/{id}/slots".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -290,7 +401,7 @@ class DefaultApi {
   ///  with HTTP info returned
   ///
   /// 
-  Future<Response> getInstituteSlotsWithHttpInfo(String id, { int pageSize, int page }) async {
+  Future<Response> getInstituteSlotsWithHttpInfo(String id, { int page, int pageSize, String query }) async {
     Object postBody;
 
     // verify required params are set
@@ -299,23 +410,26 @@ class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/institute/{id}/slot".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/institute/{id}/slots".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(page != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "page", page));
+    }
     if(pageSize != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "pageSize", pageSize));
     }
-    if(page != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "page", page));
+    if(query != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
     }
 
     List<String> contentTypes = [];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = ["Authorization"];
+    List<String> authNames = [];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -340,12 +454,12 @@ class DefaultApi {
   /// 
   ///
   /// 
-  Future<List<Slot>> getInstituteSlots(String id, { int pageSize, int page }) async {
-    Response response = await getInstituteSlotsWithHttpInfo(id,  pageSize: pageSize, page: page );
+  Future<SlotsSearchResponse> getInstituteSlots(String id, { int page, int pageSize, String query }) async {
+    Response response = await getInstituteSlotsWithHttpInfo(id,  page: page, pageSize: pageSize, query: query );
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<Slot>') as List).map((item) => item as Slot).toList();
+      return apiClient.deserialize(_decodeBodyBytes(response), 'SlotsSearchResponse') as SlotsSearchResponse;
     } else {
       return null;
     }
@@ -354,8 +468,8 @@ class DefaultApi {
   /// Your GET endpoint with HTTP info returned
   ///
   /// 
-  Future getInstitutesWithHttpInfo({ List<Institute> institute }) async {
-    Object postBody = institute;
+  Future<Response> getInstitutesWithHttpInfo({ int page, int pageSize, String query }) async {
+    Object postBody;
 
     // verify required params are set
 
@@ -366,11 +480,20 @@ class DefaultApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(page != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "page", page));
+    }
+    if(pageSize != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "pageSize", pageSize));
+    }
+    if(query != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
+    }
 
-    List<String> contentTypes = ["application/json"];
+    List<String> contentTypes = [];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = ["Authorization"];
+    List<String> authNames = [];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -395,29 +518,24 @@ class DefaultApi {
   /// Your GET endpoint
   ///
   /// 
-  Future getInstitutes({ List<Institute> institute }) async {
-    Response response = await getInstitutesWithHttpInfo( institute: institute );
+  Future<InstitutesSearchResponse> getInstitutes({ int page, int pageSize, String query }) async {
+    Response response = await getInstitutesWithHttpInfo( page: page, pageSize: pageSize, query: query );
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'InstitutesSearchResponse') as InstitutesSearchResponse;
     } else {
-      return;
+      return null;
     }
   }
 
   /// Your GET endpoint with HTTP info returned
   ///
   /// get all slots of a user
-  Future<Response> getSlotsWithHttpInfo(String pageSize, String page) async {
+  Future<Response> getSlotsWithHttpInfo({ int page, int pageSize }) async {
     Object postBody;
 
     // verify required params are set
-    if(pageSize == null) {
-     throw ApiException(400, "Missing required param: pageSize");
-    }
-    if(page == null) {
-     throw ApiException(400, "Missing required param: page");
-    }
 
     // create path and map variables
     String path = "/user/slots".replaceAll("{format}","json");
@@ -426,8 +544,12 @@ class DefaultApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
-      queryParams.addAll(_convertParametersForCollectionFormat("", "pageSize", pageSize));
+    if(page != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "page", page));
+    }
+    if(pageSize != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "pageSize", pageSize));
+    }
 
     List<String> contentTypes = [];
 
@@ -457,12 +579,12 @@ class DefaultApi {
   /// Your GET endpoint
   ///
   /// get all slots of a user
-  Future<List<Slot>> getSlots(String pageSize, String page) async {
-    Response response = await getSlotsWithHttpInfo(pageSize, page);
+  Future<SlotsSearchResponse> getSlots({ int page, int pageSize }) async {
+    Response response = await getSlotsWithHttpInfo( page: page, pageSize: pageSize );
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<Slot>') as List).map((item) => item as Slot).toList();
+      return apiClient.deserialize(_decodeBodyBytes(response), 'SlotsSearchResponse') as SlotsSearchResponse;
     } else {
       return null;
     }
@@ -526,19 +648,16 @@ class DefaultApi {
   ///  with HTTP info returned
   ///
   /// 
-  Future<Response> makeAppointmentWithHttpInfo(int id, int slotId) async {
+  Future<Response> makeAppointmentWithHttpInfo(int slotId) async {
     Object postBody;
 
     // verify required params are set
-    if(id == null) {
-     throw ApiException(400, "Missing required param: id");
-    }
     if(slotId == null) {
      throw ApiException(400, "Missing required param: slotId");
     }
 
     // create path and map variables
-    String path = "/institute/{id}/slot/{slotId}/make".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString()).replaceAll("{" + "slotId" + "}", slotId.toString());
+    String path = "/slot/{slotId}/make".replaceAll("{format}","json").replaceAll("{" + "slotId" + "}", slotId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -573,8 +692,8 @@ class DefaultApi {
   /// 
   ///
   /// 
-  Future<String> makeAppointment(int id, int slotId) async {
-    Response response = await makeAppointmentWithHttpInfo(id, slotId);
+  Future<String> makeAppointment(int slotId) async {
+    Response response = await makeAppointmentWithHttpInfo(slotId);
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {

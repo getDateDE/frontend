@@ -11,11 +11,6 @@ void main() {
       // TODO
     });
 
-    // String country (default value: null)
-    test('to test the property `country`', () async {
-      // TODO
-    });
-
     // String street (default value: null)
     test('to test the property `street`', () async {
       // TODO

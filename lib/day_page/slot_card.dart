@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/const/current_user.dart';
 import 'package:frontend/day_page/confirmation_page.dart';
 import 'package:frontend/day_page/register_page.dart';
 import 'package:intl/intl.dart';
+import 'package:openapi/api.dart';
 
-class AppointmentCard extends StatelessWidget {
-  final DateTime _dateTime;
+class SlotCard extends StatelessWidget {
+  final Slot _slot;
 
-  AppointmentCard(this._dateTime);
+  SlotCard(this._slot);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //TODO check if user != null then go directly to Confirmation
-        if (false) {
+        if (currentUser != null) {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -37,7 +38,13 @@ class AppointmentCard extends StatelessWidget {
             padding: EdgeInsets.only(left: 10),
             child: Align(
               child: Text(
-                DateFormat.Hm().format(this._dateTime),
+                DateFormat.Hm().format(DateTime.fromMillisecondsSinceEpoch(
+                        this._slot.dateTimestamp * 1000)) +
+                    "-" +
+                    DateFormat.Hm().format(DateTime.fromMillisecondsSinceEpoch(
+                        (this._slot.dateTimestamp +
+                                this._slot.durationInMinutes * 60) *
+                            1000)),
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 24, color: Colors.white),
               ),

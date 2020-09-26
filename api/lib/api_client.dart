@@ -18,7 +18,7 @@ class ApiClient {
   final _regList = RegExp(r'^List<(.*)>$');
   final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-  ApiClient({this.basePath = "http://localhost:3000/api"}) {
+  ApiClient({this.basePath = "http://localhost:8080/api"}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications['Authorization'] = HttpBasicAuth();
   }
@@ -38,10 +38,14 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'AddEmployeeRequest':
+          return AddEmployeeRequest.fromJson(value);
         case 'Address':
           return Address.fromJson(value);
         case 'Institute':
           return Institute.fromJson(value);
+        case 'InstitutesSearchResponse':
+          return InstitutesSearchResponse.fromJson(value);
         case 'RegisterRequest':
           return RegisterRequest.fromJson(value);
         case 'RegisterResponse':
@@ -50,6 +54,8 @@ class ApiClient {
           return Slot.fromJson(value);
         case 'SlotCreationRequest':
           return SlotCreationRequest.fromJson(value);
+        case 'SlotsSearchResponse':
+          return SlotsSearchResponse.fromJson(value);
         case 'User':
           return User.fromJson(value);
         default:

@@ -5,22 +5,106 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *http://localhost:3000/api*
+All URIs are relative to *http://localhost:8080/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addEmployee**](DefaultApi.md#addEmployee) | **POST** /institute/{id}/employees | 
+[**clearSlot**](DefaultApi.md#clearSlot) | **DELETE** /slot/{slotId}/clear | 
 [**createInstitute**](DefaultApi.md#createInstitute) | **POST** /institute | 
-[**createInstituteSlot**](DefaultApi.md#createInstituteSlot) | **POST** /institute/{id}/slot | 
+[**createSlot**](DefaultApi.md#createSlot) | **POST** /slot | 
 [**deleteInstitute**](DefaultApi.md#deleteInstitute) | **DELETE** /institute | 
-[**deleteInstituteSlot**](DefaultApi.md#deleteInstituteSlot) | **DELETE** /institute/{id}/slot | 
+[**deleteInstituteSlot**](DefaultApi.md#deleteInstituteSlot) | **DELETE** /institute/{id}/slots | 
 [**getInstitute**](DefaultApi.md#getInstitute) | **GET** /institute/{id} | Your GET endpoint
-[**getInstituteSlots**](DefaultApi.md#getInstituteSlots) | **GET** /institute/{id}/slot | 
+[**getInstituteSlots**](DefaultApi.md#getInstituteSlots) | **GET** /institute/{id}/slots | 
 [**getInstitutes**](DefaultApi.md#getInstitutes) | **GET** /institute | Your GET endpoint
 [**getSlots**](DefaultApi.md#getSlots) | **GET** /user/slots | Your GET endpoint
 [**getUser**](DefaultApi.md#getUser) | **GET** /user | Your GET endpoint
-[**makeAppointment**](DefaultApi.md#makeAppointment) | **POST** /institute/{id}/slot/{slotId}/make | 
+[**makeAppointment**](DefaultApi.md#makeAppointment) | **POST** /slot/{slotId}/make | 
 [**register**](DefaultApi.md#register) | **POST** /user/register | 
 
+
+# **addEmployee**
+> addEmployee(id, addEmployeeRequest)
+
+
+
+### Example 
+```dart
+import 'package:openapi/api.dart';
+
+var api_instance = DefaultApi();
+var id = id_example; // String | 
+var addEmployeeRequest = AddEmployeeRequest(); // AddEmployeeRequest | 
+
+try { 
+    api_instance.addEmployee(id, addEmployeeRequest);
+} catch (e) {
+    print("Exception when calling DefaultApi->addEmployee: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | [default to null]
+ **addEmployeeRequest** | [**AddEmployeeRequest**](AddEmployeeRequest.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clearSlot**
+> clearSlot(slotId)
+
+
+
+### Example 
+```dart
+import 'package:openapi/api.dart';
+
+var api_instance = DefaultApi();
+var slotId = slotId_example; // String | 
+
+try { 
+    api_instance.clearSlot(slotId);
+} catch (e) {
+    print("Exception when calling DefaultApi->clearSlot: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slotId** | **String**|  | [default to null]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createInstitute**
 > createInstitute(institute)
@@ -32,9 +116,6 @@ creates an institute
 ### Example 
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP basic authorization: Authorization
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
 var institute = Institute(); // Institute | 
@@ -58,7 +139,7 @@ void (empty response body)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 
@@ -67,25 +148,25 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createInstituteSlot**
-> createInstituteSlot(id, slotCreationRequest)
+# **createSlot**
+> createSlot(slotCreationRequest)
 
 
-
-creates an appointment
 
 ### Example 
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure HTTP basic authorization: Authorization
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
-var id = id_example; // String | 
 var slotCreationRequest = SlotCreationRequest(); // SlotCreationRequest | 
 
 try { 
-    api_instance.createInstituteSlot(id, slotCreationRequest);
+    api_instance.createSlot(slotCreationRequest);
 } catch (e) {
-    print("Exception when calling DefaultApi->createInstituteSlot: $e\n");
+    print("Exception when calling DefaultApi->createSlot: $e\n");
 }
 ```
 
@@ -93,7 +174,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [default to null]
  **slotCreationRequest** | [**SlotCreationRequest**](SlotCreationRequest.md)|  | [optional] 
 
 ### Return type
@@ -102,7 +182,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -119,6 +199,9 @@ No authorization required
 ### Example 
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure HTTP basic authorization: Authorization
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
 
@@ -138,7 +221,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -231,24 +314,22 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInstituteSlots**
-> List<Slot> getInstituteSlots(id, pageSize, page)
+> SlotsSearchResponse getInstituteSlots(id, page, pageSize, query)
 
 
 
 ### Example 
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP basic authorization: Authorization
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
 var id = id_example; // String | 
-var pageSize = 56; // int | 
 var page = 56; // int | 
+var pageSize = 56; // int | 
+var query = username='abc';id='abc';age=18; // String | 
 
 try { 
-    var result = api_instance.getInstituteSlots(id, pageSize, page);
+    var result = api_instance.getInstituteSlots(id, page, pageSize, query);
     print(result);
 } catch (e) {
     print("Exception when calling DefaultApi->getInstituteSlots: $e\n");
@@ -260,16 +341,17 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [default to null]
- **pageSize** | **int**|  | [optional] [default to null]
  **page** | **int**|  | [optional] [default to null]
+ **pageSize** | **int**|  | [optional] [default to null]
+ **query** | **String**|  | [optional] [default to null]
 
 ### Return type
 
-[**List<Slot>**](Slot.md)
+[**SlotsSearchResponse**](SlotsSearchResponse.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 
@@ -279,22 +361,22 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInstitutes**
-> getInstitutes(institute)
+> InstitutesSearchResponse getInstitutes(page, pageSize, query)
 
 Your GET endpoint
 
 ### Example 
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP basic authorization: Authorization
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
-var institute = [List&lt;Institute&gt;()]; // List<Institute> | 
+var page = 56; // int | 
+var pageSize = 56; // int | 
+var query = username='abc';id='abc';age=18; // String | 
 
 try { 
-    api_instance.getInstitutes(institute);
+    var result = api_instance.getInstitutes(page, pageSize, query);
+    print(result);
 } catch (e) {
     print("Exception when calling DefaultApi->getInstitutes: $e\n");
 }
@@ -304,25 +386,27 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **institute** | [**List&lt;Institute&gt;**](Institute.md)|  | [optional] 
+ **page** | **int**|  | [optional] [default to null]
+ **pageSize** | **int**|  | [optional] [default to null]
+ **query** | **String**|  | [optional] [default to null]
 
 ### Return type
 
-void (empty response body)
+[**InstitutesSearchResponse**](InstitutesSearchResponse.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSlots**
-> List<Slot> getSlots(pageSize, page)
+> SlotsSearchResponse getSlots(page, pageSize)
 
 Your GET endpoint
 
@@ -336,11 +420,11 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
-var pageSize = pageSize_example; // String | 
-var page = page_example; // String | 
+var page = 56; // int | 
+var pageSize = 56; // int | 
 
 try { 
-    var result = api_instance.getSlots(pageSize, page);
+    var result = api_instance.getSlots(page, pageSize);
     print(result);
 } catch (e) {
     print("Exception when calling DefaultApi->getSlots: $e\n");
@@ -351,12 +435,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **String**|  | [default to null]
- **page** | **String**|  | [default to null]
+ **page** | **int**|  | [optional] [default to null]
+ **pageSize** | **int**|  | [optional] [default to null]
 
 ### Return type
 
-[**List<Slot>**](Slot.md)
+[**SlotsSearchResponse**](SlotsSearchResponse.md)
 
 ### Authorization
 
@@ -412,7 +496,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **makeAppointment**
-> String makeAppointment(id, slotId)
+> String makeAppointment(slotId)
 
 
 
@@ -424,11 +508,10 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Authorization').password = 'YOUR_PASSWORD';
 
 var api_instance = DefaultApi();
-var id = 56; // int | 
 var slotId = 56; // int | 
 
 try { 
-    var result = api_instance.makeAppointment(id, slotId);
+    var result = api_instance.makeAppointment(slotId);
     print(result);
 } catch (e) {
     print("Exception when calling DefaultApi->makeAppointment: $e\n");
@@ -439,7 +522,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
  **slotId** | **int**|  | [default to null]
 
 ### Return type

@@ -7,6 +7,16 @@ void main() {
   var instance = DefaultApi();
 
   group('tests for DefaultApi', () {
+    //Future addEmployee(String id, { AddEmployeeRequest addEmployeeRequest }) async 
+    test('test addEmployee', () async {
+      // TODO
+    });
+
+    //Future clearSlot(String slotId) async 
+    test('test clearSlot', () async {
+      // TODO
+    });
+
     // creates an institute
     //
     //Future createInstitute({ Institute institute }) async 
@@ -14,10 +24,8 @@ void main() {
       // TODO
     });
 
-    // creates an appointment
-    //
-    //Future createInstituteSlot(String id, { SlotCreationRequest slotCreationRequest }) async 
-    test('test createInstituteSlot', () async {
+    //Future createSlot({ SlotCreationRequest slotCreationRequest }) async 
+    test('test createSlot', () async {
       // TODO
     });
 
@@ -28,7 +36,7 @@ void main() {
 
     // deletes an appointment
     //
-    //Future deleteInstituteSlot(String id, { SlotCreationRequest slotCreationRequest }) async 
+    //Future deleteInstituteSlot(String id) async 
     test('test deleteInstituteSlot', () async {
       // TODO
     });
@@ -40,14 +48,14 @@ void main() {
       // TODO
     });
 
-    //Future<List<Slot>> getInstituteSlots(String id, { int pageSize, int page }) async 
+    //Future<SlotsSearchResponse> getInstituteSlots(String id, { int page, int pageSize, String query }) async 
     test('test getInstituteSlots', () async {
       // TODO
     });
 
     // Your GET endpoint
     //
-    //Future getInstitutes({ List<Institute> institute }) async 
+    //Future<InstitutesSearchResponse> getInstitutes({ int page, int pageSize, String query }) async 
     test('test getInstitutes', () async {
       // TODO
     });
@@ -56,7 +64,7 @@ void main() {
     //
     // get all slots of a user
     //
-    //Future<List<Slot>> getSlots(String pageSize, String page) async 
+    //Future<SlotsSearchResponse> getSlots({ int page, int pageSize }) async 
     test('test getSlots', () async {
       // TODO
     });
@@ -70,7 +78,7 @@ void main() {
       // TODO
     });
 
-    //Future<String> makeAppointment(int id, int slotId) async 
+    //Future<String> makeAppointment(int slotId) async 
     test('test makeAppointment', () async {
       // TODO
     });

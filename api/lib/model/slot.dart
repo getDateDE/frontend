@@ -2,7 +2,7 @@ part of openapi.api;
 
 class Slot {
   
-  String date = null;
+  num dateTimestamp = null;
   
   User user = null;
   
@@ -13,12 +13,12 @@ class Slot {
 
   @override
   String toString() {
-    return 'Slot[date=$date, user=$user, institute=$institute, durationInMinutes=$durationInMinutes, ]';
+    return 'Slot[dateTimestamp=$dateTimestamp, user=$user, institute=$institute, durationInMinutes=$durationInMinutes, ]';
   }
 
   Slot.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    date = json['date'];
+    dateTimestamp = json['dateTimestamp'];
     user = (json['user'] == null) ?
       null :
       User.fromJson(json['user']);
@@ -30,8 +30,8 @@ class Slot {
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (date != null)
-      json['date'] = date;
+    if (dateTimestamp != null)
+      json['dateTimestamp'] = dateTimestamp;
     if (user != null)
       json['user'] = user;
     if (institute != null)

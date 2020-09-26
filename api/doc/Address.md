@@ -9,7 +9,6 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **city** | **String** |  | [optional] [default to null]
-**country** | **String** |  | [optional] [default to null]
 **street** | **String** |  | [optional] [default to null]
 **houseNumber** | **String** |  | [optional] [default to null]
 **latitude** | **String** |  | [optional] [default to null]

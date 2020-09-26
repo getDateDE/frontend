@@ -4,8 +4,6 @@ class Address {
   
   String city = null;
   
-  String country = null;
-  
   String street = null;
   
   String houseNumber = null;
@@ -19,13 +17,12 @@ class Address {
 
   @override
   String toString() {
-    return 'Address[city=$city, country=$country, street=$street, houseNumber=$houseNumber, latitude=$latitude, longitude=$longitude, postalCode=$postalCode, ]';
+    return 'Address[city=$city, street=$street, houseNumber=$houseNumber, latitude=$latitude, longitude=$longitude, postalCode=$postalCode, ]';
   }
 
   Address.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     city = json['city'];
-    country = json['country'];
     street = json['street'];
     houseNumber = json['house_number'];
     latitude = json['latitude'];
@@ -37,8 +34,6 @@ class Address {
     Map <String, dynamic> json = {};
     if (city != null)
       json['city'] = city;
-    if (country != null)
-      json['country'] = country;
     if (street != null)
       json['street'] = street;
     if (houseNumber != null)

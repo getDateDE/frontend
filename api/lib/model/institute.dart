@@ -10,12 +10,14 @@ class Institute {
   
   Address address = null;
   
-  String description = null;
+  String description = " ";
+  
+  List<String> employees = [];
   Institute();
 
   @override
   String toString() {
-    return 'Institute[name=$name, id=$id, phone=$phone, address=$address, description=$description, ]';
+    return 'Institute[name=$name, id=$id, phone=$phone, address=$address, description=$description, employees=$employees, ]';
   }
 
   Institute.fromJson(Map<String, dynamic> json) {
@@ -27,6 +29,9 @@ class Institute {
       null :
       Address.fromJson(json['address']);
     description = json['description'];
+    employees = (json['employees'] == null) ?
+      null :
+      (json['employees'] as List).cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -41,6 +46,8 @@ class Institute {
       json['address'] = address;
     if (description != null)
       json['description'] = description;
+    if (employees != null)
+      json['employees'] = employees;
     return json;
   }
 

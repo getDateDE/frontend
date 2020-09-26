@@ -6,8 +6,8 @@ void main() {
     var instance = new SlotCreationRequest();
 
   group('test SlotCreationRequest', () {
-    // int date (default value: null)
-    test('to test the property `date`', () async {
+    // int dateTimestamp (default value: null)
+    test('to test the property `dateTimestamp`', () async {
       // TODO
     });
 

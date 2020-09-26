@@ -26,8 +26,13 @@ void main() {
       // TODO
     });
 
-    // String description (default value: null)
+    // String description (default value: " ")
     test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // List<String> employees (default value: [])
+    test('to test the property `employees`', () async {
       // TODO
     });
 

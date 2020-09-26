@@ -6,8 +6,8 @@ void main() {
     var instance = new Slot();
 
   group('test Slot', () {
-    // String date (default value: null)
-    test('to test the property `date`', () async {
+    // num dateTimestamp (default value: null)
+    test('to test the property `dateTimestamp`', () async {
       // TODO
     });
 
